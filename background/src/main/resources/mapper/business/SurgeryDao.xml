@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cikers.wechat.mall.modules.business.dao.SurgeryDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.cikers.wechat.mall.modules.business.entity.SurgeryEntity" id="surgeryMap">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="type" column="type"/>
+        <result property="amount" column="amount"/>
+        <result property="clientGender" column="client_gender"/>
+        <result property="clientHeight" column="client_height"/>
+        <result property="clientWeight" column="client_weight"/>
+        <result property="preoperativePhotos" column="preoperative_photos"/>
+        <result property="surgeryTime" column="surgery_time"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+
+</mapper>
