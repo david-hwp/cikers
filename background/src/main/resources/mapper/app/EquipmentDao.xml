@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cikers.wechat.mall.modules.app.dao.EquipmentDao">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.cikers.wechat.mall.modules.app.entity.EquipmentEntity" id="equipmentMap">
+        <result property="id" column="id"/>
+        <result property="articleNumber" column="article_number"/>
+        <result property="imgURL" column="img_url"/>
+        <result property="price" column="price"/>
+        <result property="descURL" column="desc_url"/>
+        <!--<collection property="proudcts" ofType="com.cikers.wechat.mall.modules.app.entity.ProductEntity"-->
+        <!--javaType="ArrayList" column="id"-->
+        <!--select="com.cikers.wechat.mall.modules.app.dao.ProductDao.getProductByEqptId"/>-->
+        <!--<collection property="props"-->
+        <!--javaType="HashMap" column="id"-->
+        <!--select="com.cikers.wechat.mall.modules.app.service.PropertyRelationService.selectByEqptId"/>-->
+    </resultMap>
+
+    <insert id="insert" parameterType="com.cikers.wechat.mall.modules.app.entity.EquipmentEntity">
+        INSERT INTO tb_equipment (id, article_number, price, img_url, desc_url)
+        VALUES (#{id}, #{articleNumber}, #{price}, #{imgURL}, #{descURL});
+    </insert>
+
+    <delete id="truncate" parameterType="java.lang.Integer">
+        TRUNCATE tb_equipment;
+    </delete>
+
+    <select id="queryList" resultMap="equipmentMap" parameterType="com.cikers.wechat.mall.modules.app.form.ProductForm">
+        SELECT *
+        FROM tb_equipment
+        WHERE article_number IN (
+        SELECT t.article_number
+        FROM (SELECT *
+        FROM tb_equipment
+        WHERE id IN (
+        <choose>
+            <when test="keyword != null and keyword != '' and type != null and type != ''">
+                SELECT r.equipment_id
+                FROM tb_property_relation r
+                LEFT JOIN tb_property p ON r.property_id = p.id
+                WHERE equipment_id IN (
+                SELECT r.equipment_id
+                FROM tb_property_relation r
+                LEFT JOIN tb_property p ON r.property_id = p.id
+                WHERE r.property_name = 'TYPE' AND p.`desc` = #{type})
+                AND p.`desc` LIKE #{keyword}
+            </when>
+            <when test="keyword != null and keyword != ''">
+                SELECT r.equipment_id
+                FROM tb_property_relation r
+                LEFT JOIN tb_property p ON r.property_id = p.id
+                WHERE p.`desc` LIKE #{keyword}
+            </when>
+            <when test="type != null and type != ''">
+                SELECT r.equipment_id
+                FROM tb_property_relation r
+                LEFT JOIN tb_property p ON r.property_id = p.id
+                WHERE r.property_name = 'TYPE' AND p.`desc` = #{type}
+            </when>
+            <otherwise>
+#                 SELECT eqpt_id FROM tb_product
+                SELECT id FROM tb_equipment ORDER BY id ASC
+            </otherwise>
+        </choose>
+        )
+        GROUP BY article_number
+        ORDER BY id ASC
+        LIMIT #{offset}, #{pageSize}) AS t
+        );
+    </select>
+
+</mapper>

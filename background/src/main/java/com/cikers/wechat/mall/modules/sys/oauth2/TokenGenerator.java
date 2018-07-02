@@ -19,7 +19,7 @@ public class TokenGenerator {
         return generateValue(UUID.randomUUID().toString());
     }
 
-    private static final char[] hexCode = "0123456789greendoctor".toCharArray();
+    private static final char[] hexCode = "0123456789cikers".toCharArray();
 
     public static String toHexString(byte[] data) {
         if(data == null) {

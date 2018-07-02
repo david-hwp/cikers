@@ -3,10 +3,10 @@ spring:
         type: com.alibaba.druid.pool.DruidDataSource
         driverClassName: com.mysql.jdbc.Driver
         druid:
-            url: 'jdbc:mysql://localhost:3306/cikers?allowMultiQueries=true&useUnicode=true&characterEncoding
+            url: 'jdbc:mysql://172.17.0.1:3306/cikers?allowMultiQueries=true&useUnicode=true&characterEncoding
             =UTF-8&useSSL=false'
             username: root
-            password: root
+            password: suyou123!
             initial-size: 10
             max-active: 100
             min-idle: 10

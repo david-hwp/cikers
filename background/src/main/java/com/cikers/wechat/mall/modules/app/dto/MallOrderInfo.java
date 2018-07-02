@@ -4,12 +4,12 @@
  */ 
 
 
-package com.cikers.api.vo;
+package com.cikers.wechat.mall.modules.app.dto;
+
+import com.alibaba.fastjson.JSONObject;
 
 import java.io.Serializable;
 import java.util.List;
-
-import com.alibaba.fastjson.JSONObject;
 
 /**
  * 商城订单信息

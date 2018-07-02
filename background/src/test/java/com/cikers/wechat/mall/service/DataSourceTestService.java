@@ -1,8 +1,10 @@
 
 package com.cikers.wechat.mall.service;
 
-import com.cikers.wechat.mall.modules.sys.service.SysUserService;
+import com.alibaba.fastjson.JSON;
+import com.cikers.wechat.mall.modules.app.entity.EquipmentEntity;
 import com.cikers.wechat.mall.modules.sys.entity.SysUserEntity;
+import com.cikers.wechat.mall.modules.sys.service.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +19,7 @@ public class DataSourceTestService {
     @Autowired
     private SysUserService sysUserService;
 
-    public SysUserEntity queryUser(Long userId){
+    public SysUserEntity queryUser(Long userId) {
         return sysUserService.selectById(userId);
     }
 

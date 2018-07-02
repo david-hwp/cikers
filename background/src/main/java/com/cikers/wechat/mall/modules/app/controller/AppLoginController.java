@@ -3,6 +3,7 @@ package com.cikers.wechat.mall.modules.app.controller;
 
 import com.cikers.wechat.mall.common.utils.R;
 import com.cikers.wechat.mall.modules.app.dto.LoginDTO;
+import com.cikers.wechat.mall.modules.app.utils.JwtUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -31,9 +32,16 @@ public class AppLoginController {
     @Autowired
     private RestTemplate restTemplate;
 
+    @Autowired
+    private JwtUtils jwtUtils;
+
     private static final String appid = "";	    //微信小程序appid
     private static final String secret = "";	//微信小程序密钥
     private static final String grant_type = "authorization_code";
+
+
+
+
 
     /**
      * 小程序登录
@@ -64,6 +72,22 @@ public class AppLoginController {
         map.put("sessionKey", dto.getSession_key());
 
         return R.ok(map);
+    }
+
+    /**
+     * 小程序登录
+     */
+    @PostMapping("userLogin")
+//    @ApiOperation("登录")
+    public R userLogin(String username,String password){
+
+        if (StringUtils.isBlank(username))
+        {
+            return R.error("username不能为空");
+        }
+        String token = jwtUtils.generateToken(1);
+
+        return R.ok(token);
     }
 
 }

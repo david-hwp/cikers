@@ -31,7 +31,7 @@ public class RRExceptionHandler implements HandlerExceptionResolver {
 			response.setCharacterEncoding("utf-8");
 			
 			if (ex instanceof RRException) {
-				r.put("code", ((RRException) ex).getCode());
+				r.put("e", ((RRException) ex).getCode());
 				r.put("msg", ((RRException) ex).getMessage());
 			}else if(ex instanceof DuplicateKeyException){
 				r = R.error("数据库中已存在该记录");

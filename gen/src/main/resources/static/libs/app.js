@@ -23,7 +23,7 @@ if (typeof jQuery === "undefined") {
  *              It's used for implementing functions and options related
  *              to the template. Keeping everything wrapped in an object
  *              prevents conflict with other plugins and is a better
- *              way to organize our code.
+ *              way to organize our e.
  */
 $.AdminLTE = {};
 
@@ -133,7 +133,7 @@ $.AdminLTE.options = {
 /* ------------------
  * - Implementation -
  * ------------------
- * The next block of code implements AdminLTE's
+ * The next block of e implements AdminLTE's
  * functions and plugins as specified by the
  * options above.
  */

@@ -88,7 +88,7 @@ function handleLogin()
                             {
                                 var w = c[f];
                                 w.tokenRequestEndpoint.url;
-                                r = w.tokenRequestEndpoint.url + "?response_type=code", window.swaggerUi.tokenName = e(w)
+                                r = w.tokenRequestEndpoint.url + "?response_type=e", window.swaggerUi.tokenName = e(w)
                             }
                         }
                     }
@@ -118,7 +118,7 @@ function handleLogout()
 function initOAuth(e)
 {
     var o = e || {}, i = [];
-    return appName = o.appName || i.push("missing appName"), popupMask = o.popupMask || $("#api-common-mask"), popupDialog = o.popupDialog || $(".api-popup-dialog"), clientId = o.clientId || i.push("missing client id"), clientSecret = o.clientSecret || null, realm = o.realm || i.push("missing realm"), scopeSeparator = o.scopeSeparator || " ", additionalQueryStringParams = o.additionalQueryStringParams || {}, i.length > 0 ? void log("auth unable initialize oauth: " + i) : ($("pre code").each(function (e, o)
+    return appName = o.appName || i.push("missing appName"), popupMask = o.popupMask || $("#api-common-mask"), popupDialog = o.popupDialog || $(".api-popup-dialog"), clientId = o.clientId || i.push("missing client id"), clientSecret = o.clientSecret || null, realm = o.realm || i.push("missing realm"), scopeSeparator = o.scopeSeparator || " ", additionalQueryStringParams = o.additionalQueryStringParams || {}, i.length > 0 ? void log("auth unable initialize oauth: " + i) : ($("pre e").each(function (e, o)
     {
         hljs.highlightBlock(o)
     }), $(".api-ic").unbind(), void $(".api-ic").click(function (e)

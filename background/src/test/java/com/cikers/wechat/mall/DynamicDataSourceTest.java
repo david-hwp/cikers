@@ -1,8 +1,9 @@
 package com.cikers.wechat.mall;
 
 
+import com.alibaba.fastjson.JSON;
+import com.cikers.wechat.mall.modules.app.entity.EquipmentEntity;
 import com.cikers.wechat.mall.modules.sys.entity.SysUserEntity;
-import com.cikers.wechat.mall.service.DataSourceTestService;
 import com.cikers.wechat.mall.service.DataSourceTestService;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.junit.Test;
@@ -19,7 +20,7 @@ public class DynamicDataSourceTest {
     private DataSourceTestService dataSourceTestService;
 
     @Test
-    public void test(){
+    public void test() {
         //数据源1
         SysUserEntity user1 = dataSourceTestService.queryUser(1L);
         System.out.println(ToStringBuilder.reflectionToString(user1));

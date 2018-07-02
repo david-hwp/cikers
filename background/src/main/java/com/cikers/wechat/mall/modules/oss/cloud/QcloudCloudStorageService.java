@@ -54,7 +54,7 @@ public class QcloudCloudStorageService extends CloudStorageService {
         String response = client.uploadFile(request);
 
         JSONObject jsonObject = JSONObject.fromObject(response);
-        if(jsonObject.getInt("code") != 0) {
+        if(jsonObject.getInt("e") != 0) {
             throw new RRException("文件上传失败，" + jsonObject.getString("message"));
         }
 

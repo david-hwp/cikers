@@ -1,5 +1,6 @@
-package com.cikers.api.vo;
+package com.cikers.wechat.mall.modules.app.dto;
 
+import com.cikers.wechat.mall.modules.app.entity.EquipmentEntity;
 import lombok.Data;
 
 import java.util.List;
@@ -9,8 +10,8 @@ import java.util.List;
  * Email: weiping_he@hansight.com
  */
 @Data
-public class EqptDTO {
+public class EquipmentDTO {
     private Integer e;
     private String msg;
-    private List<EqptProduct> data;
+    private List<EquipmentEntity> data;
 }

@@ -1,10 +1,10 @@
 package com.cikers.wechat.mall.modules.app.config;
 
 import com.cikers.wechat.mall.modules.app.interceptor.AuthorizationInterceptor;
-import com.cikers.wechat.mall.modules.app.resolver.LoginUserHandlerMethodArgumentResolver;
-import com.cikers.wechat.mall.modules.app.interceptor.AuthorizationInterceptor;
+import com.cikers.wechat.mall.modules.app.interceptor.RestInterceptor;
 import com.cikers.wechat.mall.modules.app.resolver.LoginUserHandlerMethodArgumentResolver;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -23,12 +23,21 @@ import java.util.List;
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
     @Autowired
     private AuthorizationInterceptor authorizationInterceptor;
+
+    //    @Autowired
+//    private RestInterceptor restInterceptor;
+    @Bean
+    RestInterceptor restInterceptor() {
+        return new RestInterceptor();
+    }
+
     @Autowired
     private LoginUserHandlerMethodArgumentResolver loginUserHandlerMethodArgumentResolver;
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(authorizationInterceptor).addPathPatterns("/app/**");
+        registry.addInterceptor(restInterceptor()).addPathPatterns("/mall/**").excludePathPatterns("/mall/user/login");
     }
 
     @Override

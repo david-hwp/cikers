@@ -3,14 +3,14 @@ server:
     tomcat:
         max-threads: 10
         min-spare-threads: 10
-    port: 80
+    port: 8888
 
 # mysql
 spring:
     datasource:
         type: com.alibaba.druid.pool.DruidDataSource
         driverClassName: com.mysql.jdbc.Driver
-        url: 'jdbc:mysql://localhost:3306/green_doctor?allowMultiQueries=true&useUnicode=true&characterEncoding
+        url: 'jdbc:mysql://localhost:3306/cikers?allowMultiQueries=true&useUnicode=true&characterEncoding
                          =UTF-8&useSSL=false'
         username: root
         password: root

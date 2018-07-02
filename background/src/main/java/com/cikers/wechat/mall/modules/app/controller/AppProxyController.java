@@ -1,0 +1,55 @@
+package com.cikers.wechat.mall.modules.app.controller;
+
+
+import com.cikers.wechat.mall.common.utils.R;
+import com.cikers.wechat.mall.modules.app.annotation.Login;
+import com.cikers.wechat.mall.modules.app.annotation.LoginUser;
+import com.cikers.wechat.mall.modules.app.entity.UserEntity;
+import com.cikers.wechat.mall.modules.app.utils.JwtUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+/**
+ * APP测试接口
+ *
+ * @author chenshun
+ * @email sunlightcs@gmail.com
+ * @date 2017-03-23 15:47
+ */
+@RestController
+@RequestMapping("/mall")
+//@Api("APP测试接口")
+public class AppProxyController {
+    @Autowired
+    private JwtUtils jwtUtils;
+
+
+    //    @Login
+    @PostMapping("/user/login")
+//    @ApiOperation("获取用户信息")
+    public R login(@LoginUser UserEntity user){
+        return R.ok().put("user", user);
+    }
+
+    //    @Login
+    @GetMapping("userInfo")
+//    @ApiOperation("获取用户信息")
+    public R userInfo(@LoginUser UserEntity user){
+        return R.ok().put("user", user);
+    }
+
+//    @Login
+    @GetMapping("userId")
+//    @ApiOperation("获取用户ID")
+    public R userInfo(@RequestAttribute("userId") Integer userId){
+        return R.ok().put("userId", userId);
+    }
+
+    @GetMapping("notToken")
+//    @ApiOperation("忽略Token验证测试")
+    public R notToken(){
+        jwtUtils.generateToken(2);
+        return R.ok().put("msg", "无需token也能访问。。。");
+    }
+
+}

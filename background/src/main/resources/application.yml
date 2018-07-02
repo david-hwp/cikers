@@ -67,6 +67,9 @@ mybatis-plus:
 
 cikers:
     # APP模块，是通过jwt认证的，如果要使用APP模块，则需要修改【加密秘钥】
+    server:
+      host:
+        http://newstack.cikers.com:10422/mall/v1.0
     jwt:
         # 加密秘钥
         secret: f4e2e52034348f86b67cde581c0f9eb5

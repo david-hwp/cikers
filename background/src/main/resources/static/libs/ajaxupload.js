@@ -489,7 +489,7 @@
             // same value in safari :(
             var id = getUID();            
              
-            // We can't use following code as the name attribute
+            // We can't use following e as the name attribute
             // won't be properly registered in IE6, and new window
             // on form submit will open
             // var iframe = document.createElement('iframe');
@@ -515,7 +515,7 @@
         _createForm: function(iframe){
             var settings = this._settings;
                         
-            // We can't use the following code in IE6
+            // We can't use the following e in IE6
             // var form = document.createElement('form');
             // form.setAttribute('method', 'post');
             // form.setAttribute('enctype', 'multipart/form-data');
